@@ -95,7 +95,7 @@ Hooks.once("ready", function() {
 		});
 	}
 	
-	if (PerceptiveCompUtils.isactiveModule(cLibWrapper) && false) {
+	if (PerceptiveCompUtils.isactiveModule(cLibWrapper)) {
 		const cPath = (foundry.canvas.containers?.DoorControl ? "foundry.canvas.containers.DoorControl" : "DoorControl" ) + ".prototype.isVisible";
 		libWrapper.register(cModuleName, cPath, function(pWrapped, ...args) {
 																										let vBuffer;
