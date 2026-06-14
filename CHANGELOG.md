@@ -1,3 +1,9 @@
+## v6.0.6
+- More bug fix
+
+## v6.0.5
+- Fixed bug that could appear under specific conditions when used with libWrapper
+
 ## v6.0.4
 - Bug fix for spotting messages
 
