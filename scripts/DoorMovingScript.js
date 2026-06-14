@@ -4,6 +4,7 @@ import {PerceptiveFlags, cDoorMoveTypes} from "./helpers/PerceptiveFlags.js";
 import { GeometricUtils } from "./utils/GeometricUtils.js";
 import { PerceptiveCompUtils, cLibWrapper } from "./compatibility/PerceptiveCompUtils.js";
 import {PerceptivePopups} from "./helpers/PerceptivePopups.js";
+import {vDCVisionFunctions} from "./helpers/BasicPatches.js";
 
 const cMovingDoors = new Set();
 
@@ -230,6 +231,7 @@ class DoorMovingManager {
 Hooks.once("ready", function() {
 	if (game.settings.get(cModuleName, "activateWallFeatures")) {
 		//replace control visible to allow moved door controls to be visible as long as the replacement is visible
+		/*
 		if (PerceptiveCompUtils.isactiveModule(cLibWrapper) && false) {
 			const cPath = (foundry.canvas.containers?.DoorControl ? "foundry.canvas.containers.DoorControl" : "DoorControl" ) + ".prototype.isVisible";
 			console.log(cPath);
@@ -248,6 +250,13 @@ Hooks.once("ready", function() {
 				return vDControlCallBuffer();
 			});
 		}
+		*/
+		
+		vDCVisionFunctions.push(function(pObject) {
+			if (DoorMovingManager.DControlProxyVisible(pObject)) {
+				return true;
+			}
+		});
 		
 		Hooks.on(cModuleName + "." + "DoorWheel", (pWall, pKeyInfos, pScrollInfos) => {
 			if (PerceptiveUtils.KeyisDown("MouseMoveDoorFast")) {
