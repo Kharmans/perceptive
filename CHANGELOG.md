@@ -1,3 +1,6 @@
+## v6.0.7
+- Fix for door swing state calculation
+
 ## v6.0.6
 - More bug fix
 
