@@ -1,3 +1,6 @@
+## v6.0.8
+- Small ui compatibility fix
+
 ## v6.0.7
 - Fix for door swing state calculation
 
